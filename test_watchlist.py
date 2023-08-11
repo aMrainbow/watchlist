@@ -1,7 +1,8 @@
 import unittest
 
-from app import app, db, Movie, User
-from app import app, db, Movie, User, forge, initdb
+from watchlist import app, db
+from watchlist.models import Movie, User
+from watchlist.commands import forge, initdb
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class WatchlistTestCase(unittest.TestCase):
@@ -38,7 +39,7 @@ class WatchlistTestCase(unittest.TestCase):
         self.assertTrue(app.config['TESTING'])
 
 
-class WatchlistTestCase(unittest.TestCase):
+#class WatchlistTestCase(unittest.TestCase):
     # ...
     # 测试 404 页面
     def test_404_page(self):
@@ -57,7 +58,7 @@ class WatchlistTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
 
-class WatchlistTestCase(unittest.TestCase):
+#class WatchlistTestCase(unittest.TestCase):
     # ...
     # 辅助方法，用于登入用户
     def login(self):
@@ -68,7 +69,7 @@ class WatchlistTestCase(unittest.TestCase):
 
 
 #测试创建、更新和删除条目
-class WatchlistTestCase(unittest.TestCase):
+#class WatchlistTestCase(unittest.TestCase):
     # ...
     # 测试创建条目
     def test_create_item(self):
@@ -150,7 +151,7 @@ class WatchlistTestCase(unittest.TestCase):
         self.assertNotIn('Test Movie Title', data)
 
 #测试认证相关功能
-class WatchlistTestCase(unittest.TestCase):
+#class WatchlistTestCase(unittest.TestCase):
     # ...
     # 测试登录保护
     def test_login_protect(self):
@@ -251,7 +252,7 @@ class WatchlistTestCase(unittest.TestCase):
         self.assertNotIn('Settings updated.', data)
         self.assertIn('Invalid input.', data)
 
-class WatchlistTestCase(unittest.TestCase):
+#class WatchlistTestCase(unittest.TestCase):
     # ...
     # 测试虚拟数据
 
