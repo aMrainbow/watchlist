@@ -4,6 +4,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 from watchlist import app, db
 from watchlist.models import User, Movie
 
+from sqlalchemy import select
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -26,6 +27,21 @@ def index():
 
     movies = Movie.query.all()
     return render_template('index.html', movies=movies)
+
+
+@app.route('/search',methods=['GET','POST'])
+def search():
+    if request.method == 'POST':
+        year = request.form['year']
+        stmt = select(Movie).where(Movie.year==year)
+        with db.engine.connect() as conn:
+            for row in conn.execute(stmt):
+                result=row
+        flash('Find it!')
+        return render_template('search.html',result=result)
+
+    return render_template('search.html')
+
 
 
 @app.route('/movie/edit/<int:movie_id>', methods=['GET', 'POST'])

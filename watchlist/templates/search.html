@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Search Movie</h3>
+<form method="post">
+    Year <input type="text" name="year" autocomplete="off" required>
+    <input class="btn" type="submit" name="submit" value="Search">
+</form>
+<ul class="movie-list">    
+    <li>{{ result }}
+        <span class="float-right">
+          
+        </span>
+    </li>
+</ul>
+
+{% endblock %}
