@@ -7,11 +7,13 @@
     <input class="btn" type="submit" name="submit" value="Search">
 </form>
 <ul class="movie-list">    
+    {%for result in result%}
     <li>{{ result }}
         <span class="float-right">
           
         </span>
     </li>
+    {%endfor%}
 </ul>
 
 {% endblock %}

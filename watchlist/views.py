@@ -34,9 +34,10 @@ def search():
     if request.method == 'POST':
         year = request.form['year']
         stmt = select(Movie).where(Movie.year==year)
+        result=[]
         with db.engine.connect() as conn:
             for row in conn.execute(stmt):
-                result=row
+                result.append(row)
         flash('Find it!')
         return render_template('search.html',result=result)
 
