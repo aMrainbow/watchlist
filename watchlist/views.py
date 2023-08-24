@@ -28,7 +28,7 @@ def index():
     movies = Movie.query.all()
     return render_template('index.html', movies=movies)
 
-
+#搜索路由
 @app.route('/search',methods=['GET','POST'])
 def search():
     if request.method == 'POST':
@@ -76,7 +76,7 @@ def delete(movie_id):
     flash('Item deleted.')
     return redirect(url_for('index'))
 
-
+#设置路由
 @app.route('/settings', methods=['GET', 'POST'])
 @login_required
 def settings():
@@ -95,7 +95,7 @@ def settings():
 
     return render_template('settings.html')
 
-
+#登录路由
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
